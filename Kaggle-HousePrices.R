@@ -58,11 +58,25 @@ trainEditable$SaleRange <- as.factor(SaleRange)
 #}
 
 library(ggplot2)
+q <- ggplot(trainEditable[1:1460,], aes(x = SaleRange, fill = OverallCond)) +
+  geom_bar() + 
+  ggtitle("OverallCond vs SaleRange") +
+  xlab("Brackets") +
+  ylab("Total Count") +
+  labs(fill = "OverallCond")
+
+q + scale_fill_manual(values = c("red","orange", "yellow", "green","blue", "purple", "white", "gray", "black"))
+
+library(ggplot2)
 p <- ggplot(trainEditable[1:1460,], aes(x = SaleRange, fill = MSZoning)) +
   geom_bar() + 
-  ggtitle("SaleRange") +
+  ggtitle("MSZoning vs SaleRange") +
   xlab("Brackets") +
   ylab("Total Count") +
   labs(fill = "MSZoning")
 
-p + scale_fill_manual(values = c("red","green", "gray", "blue","purple"))
+p + scale_fill_manual(values = c("red","orange", "green", "blue","purple"))
+
+trainEditable$OverallCond <- as.factor(trainEditable$OverallCond)
+
+
